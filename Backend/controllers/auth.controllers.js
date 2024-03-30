@@ -39,7 +39,7 @@ export const signUp = async (req, res) => {
         .status(200)
         .json({ message: "User created successfully....", user: savedUser });
     } else {
-      res.status(400).send({ message: "Invalid User" });
+      res.status(400).send({ error: "Invalid User" });
     }
     // here i can return user details also .... Take care of that while development
   } catch (error) {
@@ -59,7 +59,7 @@ export const logIn = async (req, res) => {
     if (!user || !isCorrectPassword) {
       return res
         .status(401)
-        .json({ message: "username or password is not correct..!" });
+        .json({ error: "username or password is not correct..!" });
     }
     generateTokenAndSetCookie(user._id, res);
     res.status(200).send({
@@ -70,7 +70,7 @@ export const logIn = async (req, res) => {
     });
   } catch (error) {
     console.log("Error while login :", error.message);
-    res.status(400).send({ message: "Internal Server Error" });
+    res.status(400).send({ error: "Internal Server Error" });
   }
 };
 
@@ -82,6 +82,6 @@ export const logOut = (req, res) => {
     res.status(200).send({"message":"user loggout succssfully"});
   } catch (error) {
     console.log("Error while Logout :", error.message);
-    res.status(400).send({ message: "Internal Server Error" });
+    res.status(400).send({ error: "Internal Server Error" });
   }
 };
