@@ -4,7 +4,6 @@ import useConversation from "../../globalStateManagement/useConversation";
 const Conversation = ({ conversation, lastIndex }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = selectedConversation?._id === conversation._id;
-  console.log(isSelected)
   return (
     <>
       <div

@@ -9,7 +9,7 @@ const SendMessageInput = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message) {
-      // toast.error("Enter something to send");
+      toast.error("Write a Message to send");
       return;
     }
 
