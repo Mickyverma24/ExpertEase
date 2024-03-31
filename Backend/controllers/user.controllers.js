@@ -8,7 +8,7 @@ export const retriveAllUsers = async (req,res) => {
         
     } catch (error) {
         console.log("Error in the User Controller :", error.message);
-        res.status(500).send("Internal server Error");
+        res.status(500).send({error :"something went wrong in useController"});
     }
 
 }
