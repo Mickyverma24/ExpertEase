@@ -37,7 +37,12 @@ export const signUp = async (req, res) => {
       let savedUser = await newUser.save();
       res
         .status(200)
-        .json({ message: "User created successfully....", user: savedUser });
+        .send({
+          Id: newUser._id,
+          fullName: newUser.fullName,
+          username: newUser.username,
+          profilePic: newUser.profile,
+        });
     } else {
       res.status(400).send({ error: "Invalid User" });
     }
@@ -78,8 +83,8 @@ export const logIn = async (req, res) => {
 export const logOut = (req, res) => {
   try {
     // res.cookie("jwt", "", {maxAge : 0});
-    res.clearCookie("jwt"); 
-    res.status(200).send({"message":"user loggout succssfully"});
+    res.clearCookie("jwt");
+    res.status(200).send({ message: "user loggout succssfully" });
   } catch (error) {
     console.log("Error while Logout :", error.message);
     res.status(400).send({ error: "Internal Server Error" });
