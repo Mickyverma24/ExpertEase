@@ -20,8 +20,6 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(input);
-    console.log(input);
-    console.log("Success fully wirerdd");
   }
   const handleCheckBoxChange = (gender) =>{
     setInput({...input,gender});
